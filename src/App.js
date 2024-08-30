@@ -3,6 +3,15 @@ import "./App.css";
 
 function App() {
   useEffect(() => {
+    // Limpiar localStorage, sessionStorage o cookies antes de cargar el script
+    localStorage.clear();
+    sessionStorage.clear();
+    // Si el chatbot usa cookies específicas, puedes intentar borrarlas:
+    document.cookie.split(";").forEach(function (cookie) {
+      document.cookie = cookie
+        .replace(/^ +/, "")
+        .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
     // Crear un nuevo script element
     const script = document.createElement("script");
     script.src = "//fw-cdn.com/10760529/3551031.js";
